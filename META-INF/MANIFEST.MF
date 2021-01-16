@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Gnsingleton
+Bundle-SymbolicName: gncor.gnsingleton;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: gncor.gnsingleton.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: gncor.gnsingleton
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: lib/javapoet-1.8.0.jar,
+ .

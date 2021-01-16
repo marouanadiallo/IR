@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="gncor.gnsingleton.commands.category"
+            name="Sample Category">
+      </category>
+      <command
+            categoryId="gncor.gnsingleton.commands.category"
+            name="Design pattern"
+            id="gncor.gnsingleton.commands.sampleCommand">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="gncor.gnsingleton.handlers.GenerateDesignPattern"
+            commandId="gncor.gnsingleton.commands.sampleCommand">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="gncor.gnsingleton.commands.sampleCommand"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+6">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="gncor.gnsingleton.menus.sampleMenu"
+               label="Generate"
+               mnemonic="M">
+            <command
+                  commandId="gncor.gnsingleton.commands.sampleCommand"
+                  id="gncor.gnsingleton.menus.sampleCommand"
+                  mnemonic="S">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>

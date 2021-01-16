@@ -13,12 +13,10 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
 
-import controller.GenerateInterface;
 import mediator.Mediator;
 
 public class Win {
 
-	protected GenerateInterface controller;
 	protected Shell shlDesignPatterns;
 	Display display = Display.getDefault();
 	ContainerMenu containerMenu;

@@ -13,8 +13,6 @@ import org.eclipse.swt.widgets.TreeItem;
 import mediator.Mediator;
 
 public class ContainerMenu extends Composite {
-	ContainerBodySettingForSingleton bodySingleton;
-	ContainerBodySettingForCOR<?> bodyCor;
 	Tree menu;
 	
 	/**
@@ -74,19 +72,6 @@ public class ContainerMenu extends Composite {
 		// Disable the check that prevents subclassing of SWT components
 	}
 
-	/**
-	 * @return the bodySingleton
-	 */
-	public ContainerBodySettingForSingleton getBodySingleton() {
-		return bodySingleton;
-	}
-
-	/**
-	 * @return the bodyCor
-	 */
-	public ContainerBodySettingForCOR<?> getBodyCor() {
-		return bodyCor;
-	}
 	public Tree getTree()
 	{
 		return menu;

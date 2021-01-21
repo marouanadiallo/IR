@@ -21,7 +21,7 @@ public class Mediator {
 		expert = new ExpertSettingViewCor(expert);
 		this.settingViewCurrent = expert.setSettingView(typePattern, container);
 
-		System.out.println(this.settingViewCurrent);
+		//System.out.println(this.settingViewCurrent);
 	}
 
 	public void generate(String typePattern, String pathAbsoluteSrc) {

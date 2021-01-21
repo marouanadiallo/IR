@@ -57,7 +57,7 @@ public class Win {
 	 */
 	protected void createContents() {
 		shlDesignPatterns = new Shell(display, SWT.CLOSE | SWT.MIN);
-		shlDesignPatterns.setSize(700, 550);
+		shlDesignPatterns.setSize(700, 650);
 		shlDesignPatterns.setText("Design patterns");
 
 		/**
@@ -78,7 +78,7 @@ public class Win {
 
 		Composite containerSettingBody = new Composite(composite, SWT.NONE);
 		containerSettingBody.setLocation(255, 0);
-		containerSettingBody.setSize(437, 503);
+		containerSettingBody.setSize(437, 620);//503
 
 		/***************************
 		 * Button Generate and cancel
@@ -87,8 +87,7 @@ public class Win {
 		btnGnrer.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if (getGetPackage().getPathAbsolute().isEmpty()
-						|| getContainerMenu().getTree().getSelection().length == 0) {
+				if (getGetPackage().getPathAbsolute() == null) {
 					MessageBox messageBox = new MessageBox(shlDesignPatterns, SWT.ERROR | SWT.OK);
 					messageBox.setText("Package n'est pas juste");
 					messageBox.setMessage(
@@ -110,7 +109,7 @@ public class Win {
 				}
 			}
 		});
-		btnGnrer.setBounds(178, 463, 136, 30);
+		btnGnrer.setBounds(178, 555, 136, 30);
 		btnGnrer.setEnabled(false);
 		btnGnrer.setText("G\u00E9n\u00E9rer et fermer");
 
@@ -122,24 +121,25 @@ public class Win {
 			}
 		});
 
-		btnAnuller.setBounds(327, 463, 90, 30);
+		btnAnuller.setBounds(327, 555, 90, 30);
 		btnAnuller.setText("Annuller");
 
 		Composite containerSettingMenus = new Composite(composite, SWT.NONE);
-		containerSettingMenus.setBounds(0, 0, 252, 503);
+		containerSettingMenus.setBounds(0, 0, 252, 620);
 
 		/********************************
 		 * Add my all views setting
 		 *******************************************/
-		getPackage = new ContainerBodySetting(containerSettingBody, SWT.NONE, shlDesignPatterns, btnGnrer);
+		getPackage = new ContainerBodySetting(containerSettingBody, SWT.NONE, btnGnrer);
 		getPackage.setBounds(10, 10, 407, 112);
+		
 
 		Composite body = new Composite(containerSettingBody, SWT.NONE);
-		body.setBounds(10, 127, 407, 330);
+		body.setBounds(10, 135, 407, 540); 
 
 		containerMenu = new ContainerMenu(containerSettingMenus, SWT.NONE, body, btnGnrer, mediator);
 		body.setLayout(new StackLayout());
-		containerMenu.setBounds(0, 0, 252, 503);
+		containerMenu.setBounds(0, 0, 252, 610);
 
 	}
 

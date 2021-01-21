@@ -14,7 +14,7 @@ import com.squareup.javapoet.TypeSpec;
 public final class GenerateAbstractExpertCorWithDefaultSolution{
 
 	public final static <U, T> void generateAbstractClassExpertCorWithDefaultSolution(String destinationPath,
-			Class<T> paramType, Class<U> returnType) throws IOException {
+			T paramType, U returnType) throws IOException {
 
 		TypeSpec expertCor = TypeSpec.classBuilder("ExpertCor").addSuperinterface(ClassName.get("cor", "Expert"))
 				.addModifiers(Modifier.ABSTRACT, Modifier.PUBLIC)
@@ -34,7 +34,7 @@ public final class GenerateAbstractExpertCorWithDefaultSolution{
 		javaFile.writeTo(path);
 	}
 	
-	private static <T, U> MethodSpec.Builder generateImplementMethodSolveFromExpert(Class<T> paramType, Class<U> returnType)
+	private static <T, U> MethodSpec.Builder generateImplementMethodSolveFromExpert(T paramType, U returnType)
 	{
 		MethodSpec.Builder solve = Generate.generateMethodSolve("solve", paramType, returnType, false);
 		solve.addAnnotation(Override.class);

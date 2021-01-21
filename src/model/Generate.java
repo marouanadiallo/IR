@@ -7,29 +7,38 @@ import com.squareup.javapoet.MethodSpec;
 
 public final class Generate {
 
-	public static <T, U> MethodSpec.Builder generateMethodSolve(String nameMethod, Class<T> paramType, Class<U> returnType, boolean isAbstract) {
+	public static <T, U> MethodSpec.Builder generateMethodSolve(String nameMethod, T paramType, U returnType,
+			boolean isAbstract) {
 
 		MethodSpec.Builder solve = MethodSpec.methodBuilder(nameMethod);
-		solve.returns(returnType);
-		solve.addParameter(paramType, "param");
+		if (paramType instanceof Class<?>) {
+			solve.addParameter((Class<?>)paramType, "param");
+		} else {
+			solve.addParameter((ClassName)paramType, "param");
+		}
+		
+		if (returnType instanceof Class<?>) {
+			solve.returns((Class<?>) returnType);
+		} else {
+			solve.returns((ClassName) returnType);
+		}
+		
 		solve.addModifiers(Modifier.PUBLIC);
-		if(isAbstract)
+		if (isAbstract)
 			solve.addModifiers(Modifier.ABSTRACT);
 		return solve;
 
 	}
-	
-	public final static MethodSpec.Builder generateConstructorAbstractCassExpertCor(String name)
-	{
+
+	public final static MethodSpec.Builder generateConstructorAbstractCassExpertCor(String name) {
 		MethodSpec.Builder constructor = MethodSpec.constructorBuilder();
 		constructor.addParameter(ClassName.get("cor", name), "next");
 		constructor.addStatement("this.$N = $N ", "nextExpert", "next");
 		return constructor;
 	}
-	
-	public final static <T, U> MethodSpec.Builder generateImplementMethodSovle(String nameMethod, Class<T> paramType,
-			Class<U> returnType, String nameMethodhandler, String nameMethodSwitchExpert, boolean isImplement) 
-	{
+
+	public final static <T, U> MethodSpec.Builder generateImplementMethodSovle(String nameMethod, T paramType,
+			U returnType, String nameMethodhandler, String nameMethodSwitchExpert, boolean isImplement) {
 		MethodSpec.Builder solve = Generate.generateMethodSolve(nameMethod, paramType, returnType, false);
 		if (isImplement)
 			solve.addAnnotation(Override.class);
@@ -46,5 +55,5 @@ public final class Generate {
 		solve.endControlFlow();
 		return solve;
 	}
-	
+
 }

@@ -14,8 +14,8 @@ public class ExpertSettingViewSingleton extends AbstractExpertSettingView{
 		if(typePattern.equalsIgnoreCase("singleton"))
 		{
 			ContainerBodySettingForSingleton s = new ContainerBodySettingForSingleton(container, SWT.NONE);
-			s.setBounds(0, 0, 407, 330);
-			System.out.println("dessin singleton setting");
+			s.setBounds(0, 0, 407, 410);
+			//System.out.println("dessin singleton setting");
 			return s;
 		}
 		return null;

@@ -8,18 +8,19 @@ import controller.ControllerSingleton;
 import view.AbstractExpertSettingView;
 import view.ExpertSettingViewCor;
 import view.ExpertSettingViewSingleton;
-import view.Win;
 
 public class Mediator {
-	Win view;
+	//Win view;
 	Composite settingViewCurrent;
+	
 	AbstractExpertController expertController;
-	AbstractExpertSettingView expert;
+	AbstractExpertSettingView expertView;
 	
 	public void setSettingView(String typePattern, Composite container) {
-		expert = new ExpertSettingViewSingleton(null);
-		expert = new ExpertSettingViewCor(expert);
-		this.settingViewCurrent = expert.setSettingView(typePattern, container);
+		expertView = new ExpertSettingViewSingleton(null);
+		expertView = new ExpertSettingViewCor(expertView);
+		
+		this.settingViewCurrent = expertView.setSettingView(typePattern, container);
 
 		//System.out.println(this.settingViewCurrent);
 	}
